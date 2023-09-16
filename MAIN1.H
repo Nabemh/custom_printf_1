@@ -27,12 +27,24 @@ struct frmt
 typedef struct frmt frmt_t;
 
 int _printf(const char *format, ...);
-va_list (lst, char buff[]);
+int _printfnc(const char *fmt, int *i, va_list lst,
+	char buff[], int flags, int precision, int width, int size);
 /*functions*/
-int _printchar(va_list type, char buff[]);
-int _printstr(va_list type, char buff[]);
-int _printpcnt(va_list type, char buff[]);
-int _printint(va_list type, char buff[]);
-int _printbinary(va_list type, char buff[]);
+int _printchar(va_list type, char buff[], int flags,
+	int width, int precision, int size);
+int _printstr(va_list type, char buff[], int flags,
+	int width, int precision, int size);
+int _printpcnt(va_list type, char buff[], int flags,
+	int width, int precision, int size);
+int _printint(va_list type, char buff[], int flags,
+	int width, int precision, int size);
+int _printbinary(va_list type, char buff[], int flags
+	int width, int preecision, int size);
+int _printptr(va_list type, char buff[], int flag,
+	int width, int preecision, int size);
+int _print_non_print(va_list type, char buff[], int flags,
+	int width, int preecision, int size);
+int _printrev(va_list type, char buff[], int flags,
+	int width, int preecision, int size);
 
 #endif

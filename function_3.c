@@ -94,7 +94,7 @@ int _printptr(va_list type, char buff[], int flags,
 	return (write_ptr(buff, ind, length, width,
 		flags, pt_add, add_c, pt_add_start));
 }
-/*****PRINT POINTER****/
+/*****PRINT STRING IN REVERSE****/
 /**
  * _printrev - prints a string in reverse
  * @type: a list of arguments

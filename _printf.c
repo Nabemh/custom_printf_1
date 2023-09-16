@@ -1,69 +1,49 @@
 #include "main.h"
 
+/**
+ * _printf - my printf function
+ * @format: Format string
+ *
+ * Return: number of characters
+ */
+
 int _printf(const char *format, ...)
 {
-    int char_out = 0;
-    va_list arg_set;
-    
-    if (!format)
-        return (-1);
+	int char_out = 0;
+	va_list arg_set;
 
-    va_start(arg_set, format);
+	if (!format)
+		return (-1);
 
-    while (*format)
-    {
-        if (*format != '%')
-        {
-            write(1, format, 1);
-            char_out++;
-        }
-        else 
-        {
-            format++;
-            if (*format == '\0')
-            break;
-            
-            if (*format == '%')
-            {
-                write(1, format, 1);
-                char_out++;
-            }
+	va_start(arg_set, format);
 
-            else if (*format == 's')
-            {
-                char *s = va_arg(arg_set, char*);
-                int _strlen = 0;
-                
-                while (s[_strlen] != '\0')
-                {
-                    _strlen++;
-                }
-                write(1, s, _strlen);
-                char_out = _strlen + char_out;
+	while (*format)
+	{
+		if (*format != '%')
+		{
+			char_out += write(1, format, 1);
+		}
+		else
+		{
+			format++;
+			if (*format == '\0')
+				break;
+			if (*format == '%')
+			{
+				char_out += write(1, format, 1);
+			}
+			else if (*format == 's')
+			{
+				char_out += _string(&format, arg_set);
+			}
+			else if (*format == 'c')
+			{
+				char_out += _char(&format, arg_set);
+			}
+		}
+		format++;
+	}
 
-            }
-            else if(*format == 'c')
-            {
-                char c;
-                c = va_arg(arg_set, int);
-                write(1, &c, 1);
-                char_out++;
-            }
-        }
-
-        format++;
-    }
-
-    va_end(arg_set);
-    return (char_out);
-
-}
-int main()
-{
-    _printf("L\n");
-    _printf("%c\n", 'v');
-    _printf("%s\n", "strings");
-    _printf("%%\n");
-    return 0;
-
+	va_end(arg_set);
+	return (char_out);
 }

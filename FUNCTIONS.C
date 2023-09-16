@@ -12,11 +12,11 @@
  * Return: number of characters printed
  */
 int _printchar(va_list type, char buff[], int flags,
-        int width, int precision, int size)
+	int width, int precision, int size)
 {
-        char c = va_arg(type, int);
+	char c = va_arg(type, int);
 
-        return (_writechar(c, buff, flags, width, precision, size));
+	return (_writechar(c, buff, flags, width, precision, size));
 }
 
 /********PRINT A STRING*********/
@@ -31,45 +31,45 @@ int _printchar(va_list type, char buff[], int flags,
  * Return: number of characters printed
  */
 int _printstr(va_list type, char buff[], int flags,
-        int width, int precision, int size)
+	int width, int precision, int size)
 {
-        int i, length = 0;
-        char *str = va_arg(type, char *);
+	int i, length = 0;
+	char *str = va_arg(type, char *);
 
-        UNUSED(buff);
-        UNUSED(flags);
-        UNUSED(width);
-        UNUSED(precision);
-        UNUSED(size);
+	UNUSED(buff);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
 
-        if (str == NULL)
-        {
-                str == "(null)";
-                if (precision >= 6)
-                        str = "      ";
+	if (str == NULL)
+	{
+		str == "(null)";
+		if (precision >= 6)
+			str = "      ";
         }
-        while (str[length] != '\0')
-                length++;
-        if (precision >= 0 && precision < length)
-                length = precision;
-        if (width > length)
-        {
-                if (flags && F_MINUS)
-                {
-                        write(1, &str[0], length);
-                        for (i = width - length; i > 0; i--)
-				  write(1, " ", 1);
-                        return (width);
-                }
-                else
-                {
-                        for (i = width - length; i > 0; i--)
-                                write(1, " ", 1);
-                        write(1, &str[0], length);
-                        return (width);
-                }
-        }
-        return (write(1, str, length));
+	while (str[length] != '\0')
+		length++;
+	if (precision >= 0 && precision < length)
+		length = precision;
+	if (width > length)
+	{
+		if (flags && F_MINUS)
+		{
+		       	write(1, &str[0], length);
+			for (i = width - length; i > 0; i--)
+				 write(1, " ", 1);
+			return (width);
+		}
+		else
+		{
+			for (i = width - length; i > 0; i--)
+				write(1, " ", 1);
+			write(1, &str[0], length);
+	       		return (width);
+		}
+	}
+	return (write(1, str, length));
 }
 
 /********PRINT THE % SIGN*********/
@@ -84,13 +84,54 @@ int _printstr(va_list type, char buff[], int flags,
  * Return: number of charachters printed
  */
 int _printpcnt(va_list type, char buff[], int flags,
-        int width, int precision, int size)
+	int width, int precision, int size)
 {
-   	UNUSED(type);
-        UNUSED(buff);
-        UNUSED(flags);
-        UNUSED(width);
-        UNUSED(precision);
-        UNUSED(size);
-        return (write(1, "%%", 1));
+	UNUSED(type);
+	UNUSED(buff);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
+	return (write(1, "%%", 1));
+}
+/********PRINT AN INT*********/
+/**
+ * _printint - prints integer
+ * @type: a list of arguments
+ * @buff: buffer array that handles print
+ * @flags: get number of active flags
+ * @width: get width
+ * @precision: precision spec
+ * @size: size spec
+ * Return: number of characters printed
+ */
+int _priint(va_list type, char buff[], int flags,
+	int width, int precision, int size)
+{
+	int i = _BUFFSIZE - 2;
+	int is_negative = 0;
+	long int n = va_arg(type, long int);
+	unsigned long int num;
+
+	n = convert_sze_num(n, size);
+
+	if (n == 0)
+		buff[i--] = '0';
+
+	buff[_BUFFSIZE - 1] = '\0';
+	num = (unsigned long int)n;
+
+	if (n < 0)
+	{
+		num = (unsigned long int)((-1) * n);
+		is_negative = 1;
+	}
+	while (num > 0)
+	{
+		buff[i--] = (num % 10) + '0';
+		num /= 10;
+	}
+	i++;
+
+	return (print_num(is_negative, i, buff, flags, width, precision, size));
 }

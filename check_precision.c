@@ -19,9 +19,9 @@ int check_precision(const char *format, int *i, va_list lst)
 
 	for (pres_i += 1; format[pres_i] != '\0'; pres_i++)
 	{
-		if (is_digi(format[pres_i]))
+		if (is_digit(format[pres_i]))
 		{
-			presicion *= 10;
+			precision *= 10;
 			precision += format[pres_i] - '0';
 		}
 		else if (format[pres_i] == '*')

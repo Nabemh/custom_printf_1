@@ -47,7 +47,7 @@ int _printpcnt(va_list type, char buff[], int flags,
 	int width, int precision, int size);
 int _printint(va_list type, char buff[], int flags,
 	int width, int precision, int size);
-int _printbinary(va_list type, char buff[], int flags
+int _printbinary(va_list type, char buff[], int flags,
 	int width, int preecision, int size);
 int _printptr(va_list type, char buff[], int flag,
 	int width, int preecision, int size);

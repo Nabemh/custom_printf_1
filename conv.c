@@ -29,7 +29,7 @@ int hex_code(char asci_cd, char buff[], int i)
 	buff[i++] = '\\';
 	buff[i++] = 'x';
 
-	buf[i++] = outline[asci_cd / 16];
+	buff[i++] = outline[asci_cd / 16];
 	buff[i] = outline[asci_cd % 16];
 
 	return (3);

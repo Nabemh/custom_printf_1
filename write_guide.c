@@ -27,9 +27,9 @@ int _writechar(char c, char buff[], int flags,
 	if (width > 1)
 	{
 		buff[_BUFFSIZE - 1] = '\0';
-		for (i = 0; i < wdith - 1; i++)
+		for (i = 0; i < width - 1; i++)
 			buff[_BUFFSIZE - i - 2] = sp;
-		if (flags & F_MINUS)
+		if (flags & F_NEG)
 			return (write(1, &buff[0], 1)) +
 				(write(1, &buff[_BUFFSIZE - i - 1], width - 1));
 		else
@@ -67,8 +67,8 @@ int _writenum(int is_negative, int ind, char buff[],
 	else if (flags & F_SPACE)
 		add_char = ' ';
 
-	return (_writenum(ind, buff, flags width, precision,
-			length, sp, add_char));
+	return (_writenum(ind, buff, flags, width, precision,
+			len, sp, add_char));
 }
 /**
  * write_ptr - prints a memory address
@@ -110,7 +110,7 @@ int write_ptr(char buff[], int ind, int len,
 				buff[--ind] = c_add;
 			return (write(1, &buff[3], i - 3) + write(1, &buff[ind], len));
 		}
-		else if (!(dlags & F_NEG) && pad == '0')
+		else if (!(flags & F_NEG) && pad == '0')
 		{
 			if (c_add)
 				buff[--pad_start] == c_add;

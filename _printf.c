@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
     {
         if (*format != '%')
         {
-            _write(1, format, 1);
+            write(1, format, 1);
             char_out++;
         }
         else 
@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
             
             if (*format == '%')
             {
-                _write(1, format, 1);
+                write(1, format, 1);
                 char_out++;
             }
 
@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
                 {
                     _strlen++;
                 }
-                _write(1, s, _strlen);
+                write(1, s, _strlen);
                 char_out = _strlen + char_out;
 
             }
@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
             {
                 char c;
                 c = va_arg(arg_set, int);
-                _write(1, &c, 1);
+                write(1, &c, 1);
                 char_out++;
             }
         }

@@ -12,7 +12,7 @@
  * Return: either 1 or 2
  */
 int _printfnc(const char *frmt, int *ind, va_list lst, char buff[],
-	int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size)
 {
 	int i, undef_len = 0, _printedchars = -1;
 	frmt_t frmt_type[] = {

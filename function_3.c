@@ -1,3 +1,4 @@
+#include "main.h"
 /********PRINT BINARY*********/
 /**
  * _printbinary - prnts an unsigned number

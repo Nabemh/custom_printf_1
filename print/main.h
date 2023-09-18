@@ -7,6 +7,11 @@
 #define UNUSED(x) (void)(x)
 #define _BUFFSIZE 1024
 
+/* DEFINATION FOF SIZES */
+
+#define LONG_SPEC 2
+#define SHORT_SPEC 1
+
 /**
  * struct frmt - structure opr
  * @frmt: format
@@ -38,7 +43,7 @@ int _printpcnt(va_list type, char buff[], int flags,
 	int width, int precision, int size);
 int _printint(va_list type, char buff[], int flags,
 	int width, int precision, int size);
-int _printbinary(va_list type, char buff[], int flags
+int _printbinary(va_list type, char buff[], int flags,
 	int width, int preecision, int size);
 int _printptr(va_list type, char buff[], int flag,
 	int width, int preecision, int size);

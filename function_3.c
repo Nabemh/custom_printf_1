@@ -82,7 +82,7 @@ int _printptr(va_list type, char buff[], int flags,
 		num_adr /= 16;
 		length++
 	}
-	if ((flags & F_zero) && !(flags & F_NEG))
+	if ((flags & F_ZERO) && !(flags & F_NEG))
 		pt_add = '0';
 	if (flags & F_POS)
 		add_c = '+', length++;

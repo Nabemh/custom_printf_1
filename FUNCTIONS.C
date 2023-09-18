@@ -105,7 +105,7 @@ int _printpcnt(va_list type, char buff[], int flags,
  * @size: size spec
  * Return: number of characters printed
  */
-int _priint(va_list type, char buff[], int flags,
+int _printint(va_list type, char buff[], int flags,
 	int width, int precision, int size)
 {
 	int i = _BUFFSIZE - 2;
@@ -133,5 +133,59 @@ int _priint(va_list type, char buff[], int flags,
 	}
 	i++;
 
-	return (print_num(is_negative, i, buff, flags, width, precision, size));
+	return (_writenum(is_negative, i, buff, flags, width, precision, size));
+}
+/********PRINT STRING IN ROT13 *********/
+/**
+ * _rot13string - prints string in rot13
+ * @type: a list of arguments
+ * @buff: buffer array that handles print
+ * @flags: get number of active flags
+ * @width: get width
+ * @precision: precision spec
+ * @size: size spec
+ * Return: number of characters printed
+ */
+int _rot13string(va_list type, char buff[], int flags,
+	int width, int precision, int size)
+{
+	char d;
+	char *str;
+	unsigned int i, j;
+	int count = 0;
+	char _in[] =
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char _out[] =
+		"NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	str = va_arg(type, char *);
+
+	UNUSED(buff);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
+
+	if (str == NULL)
+		str = "(AHYY)";
+	for (i = 0; str[i]; i++)
+	{
+		for (j = 0; str[j]; j++)
+		{
+			if (in[j] == str [i])
+			{
+				d = out[j];
+				write(1, &d, 1);
+				count++;
+				break;
+			}
+		}
+		if (!in[j])
+		{
+			d = str[i];
+			write(1, &d, 1);
+			count++;
+		}
+	}
+	return (count);
 }

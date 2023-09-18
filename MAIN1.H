@@ -7,6 +7,9 @@
 #define UNUSED(x) (void)(x)
 #define _BUFFSIZE 1024
 
+#define S_SHORT 1
+#define S_LONG 2
+
 /**
  * struct frmt - structure opr
  * @frmt: format
@@ -46,5 +49,19 @@ int _print_non_print(va_list type, char buff[], int flags,
 	int width, int preecision, int size);
 int _printrev(va_list type, char buff[], int flags,
 	int width, int preecision, int size);
+int _rot13string(va_list type, char buff[], int flags,
+	int width, int precision, int size);
 
+/*CONV*/
+int hex_code(char asci_cd, char buff[], int i);
+int can_print(char c);
+long int convert_sze_num(long int num, int size);
+
+/*WRITE_GUIDE*/
+int _writechar(char c, char buff[], int flags,
+	int width, int precision, int size);
+int write_ptr(char buff[], int ind, int len,
+	int flags, int width, char pad, char c_add, int pad_start);
+int _writenum(int is_negative, int ind, char buff[],
+	int flags, int width, int precision, int size);
 #endif

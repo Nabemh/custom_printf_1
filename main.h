@@ -10,6 +10,12 @@
 #define S_SHORT 1
 #define S_LONG 2
 
+#define F_NEG 1
+#define F_POS 2
+#define F_ZERO 4
+#define F_HASH 8
+#define F_SPACE 16
+
 /**
  * struct frmt - structure opr
  * @frmt: format
@@ -17,8 +23,8 @@
  */
 struct frmt
 {
-        char frmt;
-        int (*fnc)(va_list, char[], int, int, int, int);
+	char frmt;
+	int (*fnc)(va_list, char[], int, int, int, int);
 };
 
 /**
@@ -64,4 +70,14 @@ int write_ptr(char buff[], int ind, int len,
 	int flags, int width, char pad, char c_add, int pad_start);
 int _writenum(int is_negative, int ind, char buff[],
 	int flags, int width, int precision, int size);
+
+/*OTHER SPECIFIERS*/
+int check_flags(const char *format, int *i);
+int check_precision(const char *format, int *i, va_list lst);
+
+/*CONVENIENCE*/
+int can_print(char c);
+int hex_code(char asci_cd, char buff[], int i);
+long int convert_sze_num(long int num, int size);
+int is_digit(char c);
 #endif

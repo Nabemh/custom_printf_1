@@ -50,3 +50,16 @@ long int convert_sze_num(long int num, int size)
 
 	return ((int)num);
 }
+
+/**
+ * is_digit - checks whether a char is a digit
+ * @c: char to be checked
+ * Return: if c is a digit 1, otherwise 0
+ */
+int is_digit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+
+	return (0);
+}

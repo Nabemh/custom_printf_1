@@ -12,7 +12,7 @@ int _char(const char **format, va_list list)
 {
 	char c = va_arg(list, int);
 
-	return (write(1, &c, 1));
+	return (_write(1, &c, 1));
 }
 
 
@@ -34,7 +34,7 @@ int _string(const char **format, va_list list)
 		_strlen++;
 	}
 
-	return (write(1, s, _strlen));
+	return (_write(1, s, _strlen));
 }
 
 

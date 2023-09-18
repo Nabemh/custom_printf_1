@@ -73,8 +73,7 @@ int _writenum(int is_negative, int ind, char buff[],
 
 /*OTHER SPECIFIERS*/
 int check_flags(const char *format, int *i);
-int check_precision(const char *format, int *i, va_list lst);
-
+int check_width(const char *format, int *i, va_list lst);
 /*CONVENIENCE*/
 int can_print(char c);
 int hex_code(char asci_cd, char buff[], int i);

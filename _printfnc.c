@@ -20,7 +20,7 @@ int _printfnc(const char *frmt, int *ind, va_list lst, char buff[],
 		{'%', _printpcnt}, {'i', _printint}, {'b', _printbinary},
 		{'p', _printptr}, {'S', _print_non_print}, {'r', _printrev}, {'\0', NULL}
 	};
-	for (i = 0; frmt_type[i].frmt != '\0', i++)
+	for (i = 0; frmt_type[i].frmt != '\0'; i++)
 		if (frmt[*ind] == frmt_type[i].frmt)
 			return (frmt_type[i].fnc(lst, buff, flags, width, precision, size));
 	if (frmt_type[i].frmt == '\0')

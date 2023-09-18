@@ -81,7 +81,7 @@ int _printptr(va_list type, char buff[], int flags,
 	{
 		buff[ind--] = outline[num_adr % 16];
 		num_adr /= 16;
-		length++
+		length++;
 	}
 	if ((flags & F_ZERO) && !(flags & F_NEG))
 		pt_add = '0';

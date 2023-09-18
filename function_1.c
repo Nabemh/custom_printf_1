@@ -180,7 +180,7 @@ int _rot13string(va_list type, char buff[], int flags,
 				break;
 			}
 		}
-		if (!in[j])
+		if (!_in[j])
 		{
 			d = str[i];
 			write(1, &d, 1);

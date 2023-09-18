@@ -27,9 +27,9 @@ int _writechar(char c, char buff[], int flags,
 	if (width > 1)
 	{
 		buff[_BUFFSIZE - 1] = '\0';
-		for (i = 0; i < width - 1; i++)
+		for (i = 0; i < wdith - 1; i++)
 			buff[_BUFFSIZE - i - 2] = sp;
-		if (flags & F_NEG)
+		if (flags & F_MINUS)
 			return (write(1, &buff[0], 1)) +
 				(write(1, &buff[_BUFFSIZE - i - 1], width - 1));
 		else
@@ -113,7 +113,7 @@ int write_ptr(char buff[], int ind, int len,
 		else if (!(flags & F_NEG) && pad == '0')
 		{
 			if (c_add)
-				buff[--pad_start] == c_add;
+				buff[--pad_start] = c_add;
 			buff[--ind] = 'x';
 			buff[--ind] = '0';
 			return (write(1, &buff[pad_start], i - pad_start) +

@@ -31,7 +31,7 @@ int _writechar(char c, char buff[], int flags,
 			buff[_BUFFSIZE - i - 2] = sp;
 		if (flags & F_NEG)
 			return (write(1, &buff[0], 1)) +
-				(write(1, &buff[_BUFFSIZE - i - 1], width - 1));
+				write(1, &buff[_BUFFSIZE - i - 1], width - 1);
 		else
 			return (write(1, &buff[_BUFFSIZE - i - 1], width - 1) +
 			write(1, &buff[0], 1));

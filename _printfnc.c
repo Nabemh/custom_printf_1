@@ -12,14 +12,15 @@
  * Return: either 1 or 2
  */
 int _printfnc(const char *fmt, int *ind, va_list lst, char buff[],
-	int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size)
 {
-	int i, undef_len = 0, _printedchars = -1;
+	int i, undef_len = 0, _printchars = -1;
 	fmt_t fmt_type[] = {
 		{'c', _printchar}, {'s', _printstr}, {'d', _printint},
 		{'%', _printpcnt}, {'i', _printint}, {'b', _printbinary},
-		{'p', _printptr}, {'S', _print_non_print}, {'r', _printrev},
-	       	{'u', _unsigned},{'o', _octal}, {'x', _hexadecimal}, {'X', _hexa_upper}, {'\0', NULL}
+		{'p', _printptr}, {'S', _print_non_print}, {'r', _printrev}
+		{'u', _unsigned}, {'o', _octal}, {'x', _hexadecimal},
+		{'X', _hexa_upper}, {'R', _rot13string}, {'\0', NULL}
 	};
 
 	for (i = 0; fmt_type[i].fmt != '\0', i++)
@@ -46,5 +47,5 @@ int _printfnc(const char *fmt, int *ind, va_list lst, char buff[],
 		return (undef_len);
 	}
 
-	return (_printedchars);
+	return (_printchars);
 }

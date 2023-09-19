@@ -14,7 +14,7 @@
 
 int _hexadecimal(va_list type, char buffer[], int flags, int width, int precision, int size)
 {
-         return (print_hexa(type, "0123456789abcdef", buffer, flags, 'x', width, precision, size));
+         return (handle_hex(type, "0123456789abcdef", buffer, flags, 'x', width, precision, size));
 }
 
 /**
@@ -31,7 +31,7 @@ int _hexadecimal(va_list type, char buffer[], int flags, int width, int precisio
 
 int _hexa_upper(va_list type, char buffer[], int flags, int width, int precision, int size)
 {
-        return (print_hexa(type, "0123456789ABCDEF", buffer, flags, 'X', width, precision, size));
+        return (handle_hex(type, "0123456789ABCDEF", buffer, flags, 'X', width, precision, size));
 }
 
 /** HANDLES PRINTING OF HEX IN BOTH LOWER AND UPPER CASE **/

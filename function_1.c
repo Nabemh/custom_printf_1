@@ -52,7 +52,7 @@ int _printstr(va_list type, char buff[], int flags,
 		len++;
 	if (precision >= 0 && precision < len)
 		len = precision;
-	if (width > length)
+	if (width > len)
 	{
 		if (flags && F_NEG)
 		{

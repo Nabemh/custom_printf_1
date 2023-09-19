@@ -59,4 +59,7 @@ int _hexadecimal(va_list type, char buffer[], int flags,
                 int width, int precision, int size);
 int _hexa_upper(va_list type, char buffer[], int flags,
                 int width, int precision, int size);
+int _precision(const char *format, int *arg_i, va_list arg_list);
+int _size(const char *format, int *arg_i);
+
 #endif

@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.h"`
 
 /**
  * _unsigned - Prints an unsigned number
@@ -16,7 +16,7 @@ int _unsigned(va_list type, char buffer[], int flags, int width, int precision, 
 	int i = _BUFFSIZE - 2;
 	unsigned long int digits = va_arg(types, unsigned long int);
 
-	digits = convert_size_unsgnd(digits, size);
+	digits = convert_sze_num(digits, size);
 
 	if (digits == 0)
 		buffer[i--] = '\0';
@@ -51,7 +51,7 @@ int _octal(va_list type, char buffer[], int flags, int width, int precision, int
 
 	UNUSED(width);
 
-	digits = convert_size_unsgnd(digits, size);
+	digits = convert_sze_num(digits, size);
 
 	if (digits == 0)
 		buffer[n--] = '0';

@@ -14,9 +14,9 @@ int _size(const char *format, int *arg_i)
 	int str_size = 0;
 
 	if (format[init_val] == 'l')
-		str_size = LONG_SPEC;
+		str_size = S_LONG;
 	else if (format[init_val] == 'h')
-		str_size = SHORT_SPEC;
+		str_size = S_SHORT;
 
 	if (str_size == 0)
 		*arg_i = init_val - i;

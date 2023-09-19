@@ -2,7 +2,7 @@
 
 /**
  * _hexadecimal - prints an unsigned number in hexadecimal notations
- * @types: list of arguments
+ * @type: list of arguments
  * @buffer: Buffer array to handle print
  * @flags: Calculates active flags
  * @width: gets the width
@@ -12,14 +12,16 @@
  * Return: Number of chars
  */
 
-int _hexadecimal(va_list type, char buffer[], int flags, int width, int precision, int size)
+int _hexadecimal(va_list type, char buffer[], int flags,
+		int width, int precision, int size)
 {
-         return (handle_hex(type, "0123456789abcdef", buffer, flags, 'x', width, precision, size));
+	return (handle_hex(type, "0123456789abcdef", buffer, flags,
+				'x', width, precision, size));
 }
 
 /**
  * _hexa_upper - prints an unsigned int in upper hexadecimal notation
-  * @types: list of arguments
+  * @type: list of arguments
  * @buffer: Buffer array to handle print
  * @flags: Calculates active flags
  * @width: gets the width
@@ -29,9 +31,11 @@ int _hexadecimal(va_list type, char buffer[], int flags, int width, int precisio
  * Return: Number of chars
  */
 
-int _hexa_upper(va_list type, char buffer[], int flags, int width, int precision, int size)
+int _hexa_upper(va_list type, char buffer[], int flags,
+		int width, int precision, int size)
 {
-        return (handle_hex(type, "0123456789ABCDEF", buffer, flags, 'X', width, precision, size));
+	return (handle_hex(type, "0123456789ABCDEF", buffer, flags,
+				'X', width, precision, size));
 }
 
 /** HANDLES PRINTING OF HEX IN BOTH LOWER AND UPPER CASE **/
@@ -40,7 +44,7 @@ int _hexa_upper(va_list type, char buffer[], int flags, int width, int precision
  * handle_hex - prints hexadecimal numbers in both lower and upper case
  * @type: argument list
  * @map_point: array of values to map to
- * buffer: buffer array handling print
+ * @buffer: buffer array handling print
  * @flags: calculates actice flags
  * @flag_up: Also calculates active flags
  * @width: gets the width
@@ -56,6 +60,7 @@ int handle_hex(va_list type, char map_point[], char buffer[],
 	int n = _BUFFSIZE - 2;
 	unsigned long int digit = va_arg(type, unsigned long int);
 	unsigned long int digit2 = digit;
+
 	UNUSED(width);
 
 	digit = convert_sze_num(digit, size);

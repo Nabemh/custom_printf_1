@@ -68,7 +68,7 @@ int handle_hex(va_list type, char map_point[], char buffer[],
 int _rot13string(va_list type, char buff[], int flags,
 	int width, int precision, int size);
 int handle_unsigned(int is_neg, int id, char buffer[],
-		int flags, int width, int precision, int size);
+	int flags, int width, int precision, int size);
 
 /*CONV*/
 int hex_code(char asci_cd, char buff[], int i);

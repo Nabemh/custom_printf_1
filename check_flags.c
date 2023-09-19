@@ -24,6 +24,6 @@ int check_flags(const char *format, int *i)
 		if (FLAGS_C[j] == 0)
 			break;
 	}
-	*i = pres_i;
+	*i = pres_i - 1;
 	return (flags);
 }

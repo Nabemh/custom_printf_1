@@ -63,10 +63,8 @@ int _hexadecimal(va_list type, char buffer[], int flags,
 	int width, int precision, int size);
 int _hexa_upper(va_list type, char buffer[], int flags,
 	int width, int precision, int size);
-int handle_hex(va_list type, char map_point[], char buffer[], int flags,
-	char flag_up, int width, int precision, int size);
-int _precision(const char *format, int *arg_i, va_list arg_list);
-int _size(const char *format, int *arg_i);
+int handle_hex(va_list type, char map_point[], char buffer[],
+	int flags, char flag_up, int width, int precision, int size);
 int _rot13string(va_list type, char buff[], int flags,
 	int width, int precision, int size);
 
@@ -74,12 +72,13 @@ int _rot13string(va_list type, char buff[], int flags,
 int hex_code(char asci_cd, char buff[], int i);
 int can_print(char c);
 long int convert_sze_num(long int num, int size);
+int is_digit(char c);
 
 /*WRITE_GUIDE*/
 int _writechar(char c, char buff[], int flags,
 	int width, int precision, int size);
 int write_ptr(char buff[], int ind, int len,
-	int flags, int width, char pad, char c_add, int pad_start);
+	int width, int flags, char pad, char c_add, int pad_start);
 int _writenum(int is_negative, int ind, char buff[],
 	int flags, int width, int precision, int size);
 int print_num(int ind, char buff[], int flags,
@@ -88,10 +87,8 @@ int print_num(int ind, char buff[], int flags,
 /*OTHER SPECIFIERS*/
 int check_flags(const char *format, int *i);
 int check_width(const char *format, int *i, va_list lst);
+int _precision(const char *format, int *arg_i, va_list arg_list);
+int _size(const char *format, int *arg_i);
 
-/*CONVENIENCE*/
-int can_print(char c);
-int hex_code(char asci_cd, char buff[], int i);
-long int convert_sze_num(long int num, int size);
-int is_digit(char c);
+
 #endif

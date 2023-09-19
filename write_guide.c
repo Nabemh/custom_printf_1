@@ -142,7 +142,7 @@ int print_num(int ind, char buff[], int flags,
  * Return: number of characters printed
  */
 int write_ptr(char buff[], int ind, int len,
-	int flags, int width, char pad, char c_add, int pad_start)
+	int width, int flags, char pad, char c_add, int pad_start)
 {
 	int i;
 
@@ -156,7 +156,6 @@ int write_ptr(char buff[], int ind, int len,
 		{
 			buff[--ind] = 'x';
 			buff[--ind] = '0';
-
 			if (c_add)
 				buff[--ind] = c_add;
 			return (write(1, &buff[ind], len) + write(1, &buff[3], i - 3));
@@ -173,8 +172,8 @@ int write_ptr(char buff[], int ind, int len,
 		{
 			if (c_add)
 				buff[--pad_start] = c_add;
-			buff[--ind] = 'x';
 			buff[--ind] = '0';
+			buff[--ind] = 'x';
 			return (write(1, &buff[pad_start], i - pad_start) +
 					write(1, &buff[ind], len - (1 - pad_start) - 2));
 		}

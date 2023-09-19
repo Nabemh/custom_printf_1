@@ -33,7 +33,7 @@ int _printchar(va_list type, char buff[], int flags,
 int _printstr(va_list type, char buff[], int flags,
 	int width, int precision, int size)
 {
-	int i, length = 0;
+	int len = 0, i;
 	char *str = va_arg(type, char *);
 
 	UNUSED(buff);
@@ -48,28 +48,28 @@ int _printstr(va_list type, char buff[], int flags,
 		if (precision >= 6)
 			str = "      ";
         }
-	while (str[length] != '\0')
-		length++;
-	if (precision >= 0 && precision < length)
-		length = precision;
+	while (str[len] != '\0')
+		len++;
+	if (precision >= 0 && precision < len)
+		len = precision;
 	if (width > length)
 	{
 		if (flags && F_NEG)
 		{
-		       	write(1, &str[0], length);
-			for (i = width - length; i > 0; i--)
+		       	write(1, &str[0], len);
+			for (i = width - len; i > 0; i--)
 				 write(1, " ", 1);
 			return (width);
 		}
 		else
 		{
-			for (i = width - length; i > 0; i--)
+			for (i = width - len; i > 0; i--)
 				write(1, " ", 1);
-			write(1, &str[0], length);
+			write(1, &str[0], len);
 	       		return (width);
 		}
 	}
-	return (write(1, str, length));
+	return (write(1, str, len));
 }
 
 /********PRINT THE % SIGN*********/
@@ -170,7 +170,7 @@ int _rot13string(va_list type, char buff[], int flags,
 		str = "(AHYY)";
 	for (i = 0; str[i]; i++)
 	{
-		for (j = 0; str[j]; j++)
+		for (j = 0; _in[j]; j++)
 		{
 			if (_in[j] == str [i])
 			{

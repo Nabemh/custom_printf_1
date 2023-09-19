@@ -21,7 +21,7 @@ int _precision(const char *format, int *arg_i, va_list arg_list)
 
 	while (format[init_val] != '\0')
 	{
-		if (is_num(format[init_val]))
+		if (is_digit(format[init_val]))
 		{
 			val_precision *= 10;
 			val_precision += format[init_val] - '0';

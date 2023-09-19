@@ -18,14 +18,14 @@ int _printfnc(const char *frmt, int *ind, va_list lst, char buff[],
 	frmt_t frmt_type[] = {
 		{'c', _printchar}, {'s', _printstr}, {'d', _printint},
 		{'%', _printpcnt}, {'i', _printint}, {'b', _printbinary},
-		{'p', _printptr}, {'S', _print_non_print}, {'r', _printrev}
+		{'p', _printptr}, {'S', _print_non_print}, {'r', _printrev},	
 		{'u', _unsigned}, {'o', _octal}, {'x', _hexadecimal},
 		{'X', _hexa_upper}, {'R', _rot13string}, {'\0', NULL}
 	};
 
 	for (i = 0; frmt_type[i].frmt != '\0'; i++)
 		if (frmt[*ind] == frmt_type[i].frmt)
-			return (frmt_type[i].fn(lst, buff, flags, width, precision, size));
+			return (frmt_type[i].fnc(lst, buff, flags, width, precision, size));
 
 	if (frmt_type[i].frmt == '\0')
 	{
@@ -43,7 +43,7 @@ int _printfnc(const char *frmt, int *ind, va_list lst, char buff[],
 				--(*ind);
 			return (1);
 		}
-		undef_len += write(1, &fmt[*ind], 1);
+		undef_len += write(1, &frmt[*ind], 1);
 		return (undef_len);
 	}
 

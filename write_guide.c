@@ -67,8 +67,8 @@ int _writenum(int is_negative, int ind, char buff[],
 	else if (flags & F_SPACE)
 		add_c = ' ';
 
-	return (write_num(ind, buffer, flags, width, precision,
-		length, padd, extra_ch));
+	return (write_num(ind, buff, flags, width, precision,
+		length, sp, add_c));
 }
 
 /**
@@ -125,7 +125,7 @@ int write_num(int ind, char buff[], int flags,
 		}
 	}
 	if (add_c)
-		buff[--ind] = ad_c;
+		buff[--ind] = add_c;
 	return (write(1, &buff[ind], len));
 }
 

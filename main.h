@@ -82,8 +82,6 @@ int write_ptr(char buff[], int ind, int len,
 	int flags, int width, char pad, char c_add, int pad_start);
 int _writenum(int is_negative, int ind, char buff[],
 	int flags, int width, int precision, int size);
-int write_num(int ind, char buff[], int flags,
-	int width, int prc, int len, char sp, char add_c);
 
 /*OTHER SPECIFIERS*/
 int check_flags(const char *format, int *i);

@@ -19,7 +19,7 @@ int _size(const char *format, int *arg_i)
 		str_size = S_SHORT;
 
 	if (str_size == 0)
-		*arg_i = init_val - i;
+		*arg_i = init_val - 1;
 	else
 		*arg_i = init_val;
 

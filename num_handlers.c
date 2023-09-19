@@ -13,7 +13,7 @@
 
 int _unsigned(va_list type, char buffer[], int flags, int width, int precision, int size)
 {
-	int i = BUFF_SIZE - 2;
+	int i = _BUFFSIZE - 2;
 	unsigned long int digits = va_arg(types, unsigned long int);
 
 	digits = convert_size_unsgnd(digits, size);
@@ -27,8 +27,8 @@ int _unsigned(va_list type, char buffer[], int flags, int width, int precision, 
 	}
 	i++;
 
-	write(1, &buffer[i], BUFF_SIZE - i - 1);
-	return (BUFF_SIZE - i -1);
+	write(1, &buffer[i], _BUFFSIZE - i - 1);
+	return (_BUFFSIZE - i -1);
 }
 
 /**
@@ -45,7 +45,7 @@ int _unsigned(va_list type, char buffer[], int flags, int width, int precision, 
 
 int _octal(va_list type, char buffer[], int flags, int width, int precision, int size)
 {
-	int n = BUFF_SIZE - 2;
+	int n = _BUFFSIZE - 2;
 	unsigned long int digits = va_arg(types, unsigned long int);
 	unsigned long int init_digit = digits;
 
@@ -56,7 +56,7 @@ int _octal(va_list type, char buffer[], int flags, int width, int precision, int
 	if (digits == 0)
 		buffer[n--] = '0';
 
-	buffer[BUFF_SIZE -1] = '\0';
+	buffer[_BUFFSIZE -1] = '\0';
 
 	for (; digits > 0; digits /= 8 )
 	{
@@ -69,7 +69,7 @@ int _octal(va_list type, char buffer[], int flags, int width, int precision, int
 
 	n++;
 	
-	write(1, &buffer[n], BUFF_SIZE - n -1);
+	write(1, &buffer[n], _BUFFSIZE - n -1);
 
-	return (BUFF_SIZE - n - 1);
+	return (_BUFFSIZE - n - 1);
 }

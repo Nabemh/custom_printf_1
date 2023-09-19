@@ -11,7 +11,7 @@
 
 int _precision(const char *format, int *arg_i, va_list arg_list)
 {
-	int init_val = *n + 1;
+	int init_val = *arg_i + 1;
 	int val_precision = -1;
 
 	if (format[init_val] != '.')
@@ -23,7 +23,7 @@ int _precision(const char *format, int *arg_i, va_list arg_list)
 	{
 		if (is_num(format[init_val]))
 		{
-			val_precision *+ 10;
+			val_precision *= 10;
 			val_precision += format[init_val] - '0';
 			init_val++;
 		}

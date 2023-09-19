@@ -88,5 +88,5 @@ int check_width(const char *format, int *i, va_list lst);
 int can_print(char c);
 int hex_code(char asci_cd, char buff[], int i);
 long int convert_sze_num(long int num, int size);
-int is_digit(char c);
+int is_num(char c);
 #endif

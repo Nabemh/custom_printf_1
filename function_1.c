@@ -48,17 +48,20 @@ int _printstr(va_list type, char buff[], int flags,
 		if (precision >= 6)
 			str = "      ";
 	}
+
 	while (str[len] != '\0')
 		len++;
+
 	if (precision >= 0 && precision < len)
 		len = precision;
+
 	if (width > len)
 	{
 		if (flags && F_NEG)
 		{
 			write(1, &str[0], len);
 			for (i = width - len; i > 0; i--)
-				 write(1, " ", 1);
+				write(1, " ", 1);
 			return (width);
 		}
 		else

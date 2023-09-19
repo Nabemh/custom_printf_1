@@ -18,7 +18,7 @@ int _printfnc(const char *frmt, int *ind, va_list lst, char buff[],
 	frmt_t frmt_type[] = {
 		{'c', _printchar}, {'s', _printstr}, {'d', _printint},
 		{'%', _printpcnt}, {'i', _printint}, {'b', _printbinary},
-		{'p', _printptr}, {'S', _print_non_print}, {'r', _printrev},	
+		{'p', _printptr}, {'S', _print_non_print}, {'r', _printrev},
 		{'u', _unsigned}, {'o', _octal}, {'x', _hexadecimal},
 		{'X', _hexa_upper}, {'R', _rot13string}, {'\0', NULL}
 	};

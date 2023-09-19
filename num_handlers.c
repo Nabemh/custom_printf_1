@@ -71,5 +71,5 @@ int _octal(va_list type, char buffer[], int flags,
 
 	n++;
 
-	return (handle_unsigned(0, n, buffer, flags, width, precision, size));
+	return (handle_unsigned( n, buffer, flags, width, precision, size));
 }

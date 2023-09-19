@@ -67,12 +67,12 @@ int _writenum(int is_negative, int ind, char buff[],
 	else if (flags & F_SPACE)
 		add_c = ' ';
 
-	return (write_num(ind, buff, flags, width, precision,
+	return (print_num(ind, buff, flags, width, precision,
 		length, sp, add_c));
 }
 
 /**
- * write_num - Write a number using  bufffer
+ * print_num - Write a number using  bufffer
  * @ind: Index at which the number starts on buffer
  * @buff: Buffer
  * @flags: Flags
@@ -84,7 +84,7 @@ int _writenum(int is_negative, int ind, char buff[],
  *
  * Return: Number of printed chars.
  */
-int write_num(int ind, char buff[], int flags,
+int print_num(int ind, char buff[], int flags,
 	int width, int prc, int len, char sp, char add_c)
 {
 	int i, sp_start = 1;

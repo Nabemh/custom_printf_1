@@ -29,7 +29,7 @@ int _unsigned(va_list type, char buffer[], int flags,
 	}
 	n++;
 
-	return (handle_unsigned(0, n, buffer, flags, width, precision, size));
+	return (_writenum(0, n, buffer, flags, width, precision, size));
 }
 
 /**
@@ -71,5 +71,5 @@ int _octal(va_list type, char buffer[], int flags,
 
 	n++;
 
-	return (handle_unsigned( n, buffer, flags, width, precision, size));
+	return (_writenum( n, buffer, flags, width, precision, size));
 }

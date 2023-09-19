@@ -27,7 +27,7 @@ int _writechar(char c, char buff[], int flags,
 	if (width > 1)
 	{
 		buff[_BUFFSIZE - 1] = '\0';
-		for (i = 0; i < wdith - 1; i++)
+		for (i = 0; i < width - 1; i++)
 			buff[_BUFFSIZE - i - 2] = sp;
 		if (flags & F_NEG)
 			return (write(1, &buff[0], 1)) +
@@ -53,23 +53,82 @@ int _writechar(char c, char buff[], int flags,
 int _writenum(int is_negative, int ind, char buff[],
 	int flags, int width, int precision, int size)
 {
-	int len = _BUFFSIZE - ind - 1;
-	char sp = ' ', add_char = 0;
+	int length = _BUFFSIZE - ind - 1;
+	char sp = ' ', add_c = 0;
 
 	UNUSED(size);
 
 	if ((flags & F_ZERO) && !(flags & F_NEG))
 		sp = '0';
 	if (is_negative)
-		add_char = '-';
+		add_c = '-';
 	else if (flags & F_POS)
-		add_char = '+';
+		add_c = '+';
 	else if (flags & F_SPACE)
-		add_char = ' ';
+		add_c = ' ';
 
-	return (_writenum(ind, buff, flags, width, precision,
-			len, sp, add_char));
+	return (write_num(ind, buffer, flags, width, precision,
+		length, padd, extra_ch));
 }
+
+/**
+ * write_num - Write a number using  bufffer
+ * @ind: Index at which the number starts on buffer
+ * @buff: Buffer
+ * @flags: Flags
+ * @width: width
+ * @prc: precision spec
+ * @len: number length
+ * @sp: pading character
+ * @add_c: extra character
+ *
+ * Return: Number of printed chars.
+ */
+int write_num(int ind, char buff[], int flags,
+	int width, int prc, int len, char sp, char add_c)
+{
+	int i, sp_start = 1;
+
+	if (prc == 0 && ind == _BUFFSIZE - 2 && buff[ind] == '0' && width == 0)
+		return (0);
+	if (prc == 0 && ind == _BUFFSIZE - 2 && buff[ind] == '0')
+		buff[ind] = sp = ' ';
+	if (prc > 0 && prc < len)
+		sp = ' ';
+	while (prc > len)
+		buff[ind] = '0', len++;
+	if (add_c != 0)
+		len++;
+	if (width > len)
+	{
+		for (i = 1; i < width - len + 1; i++)
+			buff[i] = sp;
+		buff[i] = '\0';
+		if (flags & F_NEG && sp == ' ')
+		{
+			if (add_c)
+				buff[--ind] = add_c;
+			return (write(1, &buff[ind], len) + write(1, &buff[1], i - 1));
+		}
+		else if (!(flags & F_NEG) && sp == ' ')
+		{
+			if (add_c)
+				buff[-ind] = add_c;
+			return (write(1, &buff[1], i - 1) + write(1, &buff[ind], len));
+		}
+		else if (!(flags & F_NEG) && sp == '0')
+		{
+			if (add_c)
+				buff[--sp_start] = add_c;
+			return (write(1, &buff[sp_start], i - sp_start) +
+					 write(1, &buff[ind], len - (1 - sp_start)));
+		}
+	}
+	if (add_c)
+		buff[--ind] = ad_c;
+	return (write(1, &buff[ind], len));
+}
+
 /**
  * write_ptr - prints a memory address
  * @buff: buffer array

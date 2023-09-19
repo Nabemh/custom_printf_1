@@ -36,7 +36,7 @@ struct frmt
 typedef struct frmt frmt_t;
 
 int _printf(const char *format, ...);
-int _printfnc(const char *fmt, int *i, va_list lst,
+int _printfnc(const char *frmt, int *i, va_list lst,
 	char buff[], int flags, int precision, int width, int size);
 /*functions*/
 int _printchar(va_list type, char buff[], int flags,
@@ -55,16 +55,16 @@ int _print_non_print(va_list type, char buff[], int flags,
 	int width, int preecision, int size);
 int _printrev(va_list type, char buff[], int flags,
 	int width, int preecision, int size);
-int _unsigned(va_list type, char buffer[], int flags, 
-		int width, int precision, int size);
-int _octal(va_list type, char buffer[], int flags, 
-                int width, int precision, int size);
+int _unsigned(va_list type, char buffer[], int flags,
+	int width, int precision, int size);
+int _octal(va_list type, char buffer[], int flags,
+	int width, int precision, int size);
 int _hexadecimal(va_list type, char buffer[], int flags,
-                int width, int precision, int size);
+	int width, int precision, int size);
 int _hexa_upper(va_list type, char buffer[], int flags,
-                int width, int precision, int size);
+	int width, int precision, int size);
 int handle_hex(va_list type, char map_point[], char buffer[], int flags,
-                char flag_up, int width, int precision, int size);
+	char flag_up, int width, int precision, int size);
 int _precision(const char *format, int *arg_i, va_list arg_list);
 int _size(const char *format, int *arg_i);
 int _rot13string(va_list type, char buff[], int flags,
@@ -82,6 +82,8 @@ int write_ptr(char buff[], int ind, int len,
 	int flags, int width, char pad, char c_add, int pad_start);
 int _writenum(int is_negative, int ind, char buff[],
 	int flags, int width, int precision, int size);
+int write_num(int ind, char buff[], int flags,
+	int width, int prc, int len, char sp, char add_c);
 
 /*OTHER SPECIFIERS*/
 int check_flags(const char *format, int *i);
@@ -90,5 +92,5 @@ int check_width(const char *format, int *i, va_list lst);
 int can_print(char c);
 int hex_code(char asci_cd, char buff[], int i);
 long int convert_sze_num(long int num, int size);
-int is_num(char c);
+int is_digit(char c);
 #endif

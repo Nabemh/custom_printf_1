@@ -83,5 +83,5 @@ int handle_hex(va_list type, char map_point[], char buffer[],
 
 	n++;
 
-	return (_writenum(0, n, buffer, flags, width, precision, size));
+	return (handle_unsigned(0, n, buffer, flags, width, precision, size));
 }

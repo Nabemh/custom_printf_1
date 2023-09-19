@@ -47,7 +47,7 @@ int _printstr(va_list type, char buff[], int flags,
 		str = "(null)";
 		if (precision >= 6)
 			str = "      ";
-        }
+	}
 	while (str[len] != '\0')
 		len++;
 	if (precision >= 0 && precision < len)
@@ -56,7 +56,7 @@ int _printstr(va_list type, char buff[], int flags,
 	{
 		if (flags && F_NEG)
 		{
-		       	write(1, &str[0], len);
+			write(1, &str[0], len);
 			for (i = width - len; i > 0; i--)
 				 write(1, " ", 1);
 			return (width);
@@ -66,7 +66,7 @@ int _printstr(va_list type, char buff[], int flags,
 			for (i = width - len; i > 0; i--)
 				write(1, " ", 1);
 			write(1, &str[0], len);
-	       		return (width);
+			return (width);
 		}
 	}
 	return (write(1, str, len));
@@ -172,7 +172,7 @@ int _rot13string(va_list type, char buff[], int flags,
 	{
 		for (j = 0; _in[j]; j++)
 		{
-			if (_in[j] == str [i])
+			if (_in[j] == str[i])
 			{
 				d = _out[j];
 				write(1, &d, 1);

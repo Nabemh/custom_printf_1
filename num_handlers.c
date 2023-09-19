@@ -13,15 +13,17 @@
  */
 
 int _unsigned(va_list type, char buffer[], int flags,
-		int width, int precision, int size)
+	int width, int precision, int size)
 {
 	int n = _BUFFSIZE - 2;
 	unsigned long int digits = va_arg(type, unsigned long int);
 
-	digits = convert_sze_num(digits, size);
+	digits = convert_sze_unsgnd(digits, size);
 
 	if (digits == 0)
-		buffer[n--] = '\0';
+		buffer[n--] = '0';
+	buffer[_BUFFSIZE - 1] = '\0';
+
 	for (; digits > 0; digits /= 10)
 	{
 
@@ -29,7 +31,7 @@ int _unsigned(va_list type, char buffer[], int flags,
 	}
 	n++;
 
-	return (_writenum(0, n, buffer, flags, width, precision, size));
+	return (_writeunsgnd(0, n, buffer, flags, width, precision, size));
 }
 
 /**
@@ -45,7 +47,7 @@ int _unsigned(va_list type, char buffer[], int flags,
  */
 
 int _octal(va_list type, char buffer[], int flags,
-		int width, int precision, int size)
+	int width, int precision, int size)
 {
 	int n = _BUFFSIZE - 2;
 	unsigned long int digits = va_arg(type, unsigned long int);
@@ -53,14 +55,14 @@ int _octal(va_list type, char buffer[], int flags,
 
 	UNUSED(width);
 
-	digits = convert_sze_num(digits, size);
+	digits = convert_sze_unsgnd(digits, size);
 
 	if (digits == 0)
 		buffer[n--] = '0';
 
 	buffer[_BUFFSIZE - 1] = '\0';
 
-	for (; digits > 0; digits /= 8)
+	while (digits > 0)
 	{
 		buffer[n--] = (digits % 8) + '0';
 		digits /= 8;
@@ -71,5 +73,5 @@ int _octal(va_list type, char buffer[], int flags,
 
 	n++;
 
-	return (_writenum( n, buffer, flags, width, precision, size));
+	return (_writeunsgnd(0, n, buffer, flags, width, precision, size));
 }

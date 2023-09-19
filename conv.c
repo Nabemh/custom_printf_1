@@ -63,3 +63,20 @@ int is_digit(char c)
 
 	return (0);
 }
+
+
+/**
+ * convert_sze_unsgnd - represent a number in the specified size
+ * @num: number to be represnted
+ * @size: number indicating th type to be represented
+ * Return: represented value of num
+ */
+long int convert_sze_unsgnd(unsigned long int num, int size)
+{
+	if (size == S_LONG)
+		return (num);
+	else if (size == S_SHORT)
+		return ((unsigned short)num);
+
+	return ((unsigned int)num);
+}

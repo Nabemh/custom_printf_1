@@ -184,3 +184,55 @@ int write_ptr(char buff[], int ind, int len,
 		buff[--ind] = c_add;
 	return (write(1, &buff[ind], _BUFFSIZE - ind - 1));
 }
+
+/**
+ * _writeunsgnd - printsan usnigned number
+ * @is_negative: checks if number is negative
+ * @ind: index at buffer where number starts
+ * @buff: array of characters
+ * @flags: gets active flags
+ * @width: width spec
+ * @precision: precision spec
+ * @size: size spec
+ * Return: number of printed characters
+ */
+int _writeunsgnd(int is_negative, int ind, char buff[],
+	int flags, int width, int precision, int size)
+{
+	int len = _BUFFSIZE - ind - 1, i = 0;
+	char sp = ' ';
+
+	UNUSED(is_negative);
+	UNUSED(size);
+
+	if (precision == 0 && ind  == _BUFFSIZE - 2 && buff[ind] == '0')
+		return (0);
+	if (precision > 0 && precision < len)
+		sp = ' ';
+
+	while (precision > len)
+	{
+		buff[--ind] = '0';
+		len++;
+	}
+
+	if ((flags & F_ZERO) && !(flags & F_NEG))
+		sp = '0';
+	if (width > len)
+	{
+		for (i = 0; i < width - len; i++)
+			buff[i] = sp;
+
+		buff[i] = '\0';
+
+		if (flags & F_NEG)
+		{
+			return (write(1, &buff[ind], len) + write(1, &buff[0], i));
+		}
+		else
+		{
+			return (write(, &buff[0], i) + write(1, &buff[ind], len));
+		}
+	}
+	return (write(1, &buff[ind], len));
+}

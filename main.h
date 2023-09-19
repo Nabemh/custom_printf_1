@@ -75,6 +75,7 @@ int hex_code(char asci_cd, char buff[], int i);
 int can_print(char c);
 long int convert_sze_num(long int num, int size);
 int is_digit(char c);
+long int convert_sze_unsgnd(unsigned long int num, int size);
 
 /*WRITE_GUIDE*/
 int _writechar(char c, char buff[], int flags,
@@ -85,6 +86,8 @@ int _writenum(int is_negative, int ind, char buff[],
 	int flags, int width, int precision, int size);
 int print_num(int ind, char buff[], int flags,
 	int width, int prc, int len, char sp, char add_c);
+int _writeunsgnd(int is_negative, int ind, char buff[],
+	int flags, int width, int precision, int size);
 
 /*OTHER SPECIFIERS*/
 int check_flags(const char *format, int *i);

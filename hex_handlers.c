@@ -51,32 +51,32 @@ int _hexa_upper(va_list type, char buffer[], int flags, int width, int precision
  */
 
 int handle_hex(va_list type, char map_point[], char buffer[],
-		int flags, char flad_up, int width, int precision, int size)
+		int flags, char flag_up, int width, int precision, int size)
 {
 	int n = _BUFFSIZE - 2;
 	unsigned long int digit = va_arg(type, unsigned long int);
 	unsigned long int digit2 = digit;
 	UNUSED(width);
 
-	digit = convert_sze_num(digitm size);
+	digit = convert_sze_num(digit, size);
 
-	if (digit = 0)
+	if (digit == 0)
 		buffer[n++] = '0';
 	buffer[_BUFFSIZE - 1] = '\0';
 
 	while (digit > 0)
 	{
-		buffer[i--] = map_point[digit % 16];
-		num /= 16;
+		buffer[n--] = map_point[digit % 16];
+		digit /= 16;
 	}
 
 	if (flags & F_HASH && digit2 != 0)
 	{
-		buffer[n++] = flag__up;
+		buffer[n++] = flag_up;
 		buffer[n++] = '0';
 	}
 
-	i++;
+	n++;
 
 	return (_writenum(0, n, buffer, flags, width, precision, size));
 }

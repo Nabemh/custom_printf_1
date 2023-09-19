@@ -55,6 +55,16 @@ int _print_non_print(va_list type, char buff[], int flags,
 	int width, int preecision, int size);
 int _printrev(va_list type, char buff[], int flags,
 	int width, int preecision, int size);
+int _unsigned(va_list type, char buffer[], int flags, 
+		int width, int precision, int size);
+int _octal(va_list type, char buffer[], int flags, 
+                int width, int precision, int size);
+int _hexadecimal(va_list type, char buffer[], int flags,
+                int width, int precision, int size);
+int _hexa_upper(va_list type, char buffer[], int flags,
+                int width, int precision, int size);
+int _precision(const char *format, int *arg_i, va_list arg_list);
+int _size(const char *format, int *arg_i);
 int _rot13string(va_list type, char buff[], int flags,
 	int width, int precision, int size);
 

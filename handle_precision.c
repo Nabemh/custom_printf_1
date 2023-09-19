@@ -25,7 +25,6 @@ int _precision(const char *format, int *arg_i, va_list arg_list)
 		{
 			val_precision *= 10;
 			val_precision += format[init_val] - '0';
-			init_val++;
 		}
 		else if (format[init_val] == '*')
 		{
@@ -35,6 +34,7 @@ int _precision(const char *format, int *arg_i, va_list arg_list)
 		}
 		else
 			break;
+		init_val++;
 	}
 
 	*arg_i = init_val - 1;

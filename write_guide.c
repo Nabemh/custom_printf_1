@@ -231,7 +231,7 @@ int _writeunsgnd(int is_negative, int ind, char buff[],
 		}
 		else
 		{
-			return (write(, &buff[0], i) + write(1, &buff[ind], len));
+			return (write(1, &buff[0], i) + write(1, &buff[ind], len));
 		}
 	}
 	return (write(1, &buff[ind], len));

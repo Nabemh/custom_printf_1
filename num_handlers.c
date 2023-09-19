@@ -1,4 +1,4 @@
-#include "main.h"`
+#include "main.h"
 
 /**
  * _unsigned - Prints an unsigned number
@@ -13,22 +13,21 @@
 
 int _unsigned(va_list type, char buffer[], int flags, int width, int precision, int size)
 {
-	int i = _BUFFSIZE - 2;
-	unsigned long int digits = va_arg(types, unsigned long int);
+	int n = _BUFFSIZE - 2;
+	unsigned long int digits = va_arg(type, unsigned long int);
 
 	digits = convert_sze_num(digits, size);
 
 	if (digits == 0)
-		buffer[i--] = '\0';
+		buffer[n--] = '\0';
 	for (; digits > 0; digits /=10)
 	{
 
-		buffer[i--] = (digits % 10) + '0';
+		buffer[n--] = (digits % 10) + '0';
 	}
-	i++;
+	n++;
 
-	write(1, &buffer[i], _BUFFSIZE - i - 1);
-	return (_BUFFSIZE - i -1);
+	return (_writenum(0, n, buffer, flags, width, precision, size));
 }
 
 /**
@@ -46,7 +45,7 @@ int _unsigned(va_list type, char buffer[], int flags, int width, int precision, 
 int _octal(va_list type, char buffer[], int flags, int width, int precision, int size)
 {
 	int n = _BUFFSIZE - 2;
-	unsigned long int digits = va_arg(types, unsigned long int);
+	unsigned long int digits = va_arg(type, unsigned long int);
 	unsigned long int init_digit = digits;
 
 	UNUSED(width);
@@ -69,7 +68,5 @@ int _octal(va_list type, char buffer[], int flags, int width, int precision, int
 
 	n++;
 	
-	write(1, &buffer[n], _BUFFSIZE - n -1);
-
-	return (_BUFFSIZE - n - 1);
+	return (_writenum(0, n, buffer, flags, width, precision, size));
 }

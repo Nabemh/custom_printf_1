@@ -27,7 +27,7 @@ int _writechar(char c, char buff[], int flags,
 	if (width > 1)
 	{
 		buff[_BUFFSIZE - 1] = '\0';
-		for (i = 0; i < width - 1; i++)
+		for (i = 0; i < wdith - 1; i++)
 			buff[_BUFFSIZE - i - 2] = sp;
 		if (flags & F_NEG)
 			return (write(1, &buff[0], 1)) +
